@@ -2,8 +2,25 @@ import { db } from "./firebase.js";
 
 
 export default async function handler(req, res) {
-console.log(process.env.FIREBASE_PROJECT_ID);
-console.log(process.env.FIREBASE_CLIENT_EMAIL);
+res.setHeader(
+        "Access-Control-Allow-Origin",
+        "https://isotonicbunk.github.io"
+    );
+
+    res.setHeader(
+        "Access-Control-Allow-Methods",
+        "GET, OPTIONS"
+    );
+
+    res.setHeader(
+        "Access-Control-Allow-Headers",
+        "Content-Type"
+    );
+
+
+    if (req.method === "OPTIONS") {
+        return res.status(200).end();
+    }
 
     if (req.method !== "GET") {
         return res.status(405).end();
