@@ -2,6 +2,8 @@ import { db } from "./firebase.js";
 
 
 export default async function handler(req, res) {
+console.log(process.env.FIREBASE_PROJECT_ID);
+console.log(process.env.FIREBASE_CLIENT_EMAIL);
 
     if (req.method !== "GET") {
         return res.status(405).end();
