@@ -20,12 +20,13 @@ export default async function handler(req, res) {
                                                                                                 res.json(data.main ?? []);
 
                                                                                                     } catch (e) {
+    console.error(e);
 
-                                                                                                            console.error(e);
-
-                                                                                                                    res.status(500).json({
-                                                                                                                                error: "Database error"
-                                                                                                                                        });
+    res.status(500).json({
+        error: e.message,
+        stack: e.stack
+    });
+}
 
                                                                                                                                             }
 
