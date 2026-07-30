@@ -20,7 +20,8 @@ res.setHeader(
     if (req.method === "OPTIONS") {
         return res.status(200).end();
     }
-
+    if (username == "") {
+return res.status(403).end()}
     if (req.method !== "POST")
             return res.status(405).end();
 
